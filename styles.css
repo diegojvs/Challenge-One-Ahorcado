@@ -1,0 +1,285 @@
+body {
+	background: #f3f5fc;
+	font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.Page1,
+.Page2,
+.Page3 {
+	height: 100vh;
+}
+
+.Page2,
+.Page3 {
+	display: none;
+}
+
+.Logo {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+}
+/* Page 1 */
+
+.Page1 {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 10% 90%;
+	grid-template-areas: 'logo1' 'page1';
+}
+
+.Logo1 {
+	grid-area: logo1;
+}
+
+.Container-btn {
+	grid-area: page1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.btn-start {
+	text-align: center;
+	font-size: 18px;
+	color: #fff;
+	width: 317px;
+	height: 114px;
+	padding: 24px;
+	margin: 38px;
+	border: none;
+	border-radius: 24px;
+	background: #0a3871;
+	cursor: pointer;
+}
+
+.btn-add {
+	text-align: center;
+	font-size: 18px;
+	color: #0a3871;
+	width: 280px;
+	height: 67px;
+	padding: 24px;
+	border: 1px solid #0a3871;
+	border-radius: 24px;
+	background: transparent;
+	cursor: pointer;
+}
+
+/* Page 2 */
+
+.Page2 {
+	display: none;
+	grid-template-columns: 1fr;
+	grid-template-rows: 10% 40% 20% 20%;
+	grid-template-areas: 'logo2' 'canvas' 'input-wrong' 'btn2';
+}
+
+.Logo2 {
+	grid-area: logo2;
+}
+
+.Container-canvas {
+	grid-area: canvas;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 16px;
+}
+
+.Container-input-wrong {
+	grid-area: input-wrong;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 32px;
+}
+
+.Container-input {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.Container-p {
+	border-bottom: #0a3871 3px solid;
+	width: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.Input-p {
+	color: #0a3871;
+	font-size: 32px;
+	margin: 0;
+}
+
+.Container-wrong {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.wrong {
+	color: #495057;
+	font-size: 34px;
+}
+
+.Container-btn2 {
+	grid-area: btn2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.btn-restart,
+.btn-desist {
+	text-align: center;
+	font-size: 16px;
+	width: 332px;
+	height: 67px;
+	padding: 24px;
+	border: none;
+	border-radius: 24px;
+	cursor: pointer;
+}
+
+.btn-restart {
+	color: #fff;
+	background: #0a3871;
+}
+
+.btn-desist {
+	color: #0a3871;
+	background: transparent;
+	border: 1px solid #0a3871;
+}
+
+.Input-label,
+.Input-mobile {
+	display: none;
+}
+
+@media only screen and (max-width: 800px) {
+	.Input-label,
+	.Input-mobile {
+		display: block;
+	}
+	.Input-label {
+		color: #0a3871;
+	}
+	.Input-mobile {
+		background: transparent;
+		border: none;
+		color: transparent;
+	}
+	.Input-mobile:focus {
+		background: transparent;
+		border: none;
+		color: transparent;
+		outline: none;
+	}
+}
+/* Page 3 */
+
+.Page3 {
+	display: none;
+	grid-template-columns: 1fr;
+	grid-template-rows: 10% 50% 40%;
+	grid-template-areas: 'logo3' 'text-area' 'btn-area';
+}
+
+.Logo3 {
+	grid-area: logo3;
+}
+
+.Container-text-area {
+	grid-area: text-area;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 60%;
+	height: 100%;
+	margin: 16px auto;
+}
+
+.Text-area {
+	border: none;
+	color: #0a3871;
+	background: transparent;
+	font-size: 32px;
+	font-weight: 400;
+	line-height: 150%;
+	padding: 2px;
+	text-align: left;
+	width: 100%;
+	height: 100%;
+	resize: none;
+}
+
+.Text-area::placeholder {
+	color: #0a3871;
+	font-size: 32px;
+}
+
+.Text-area:focus {
+	outline: none;
+}
+
+.Container-condition-btn {
+	grid-area: btn-area;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.Condition {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+
+.Container-btn-page2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.btn-save,
+.btn-cancel {
+	text-align: center;
+	font-size: 16px;
+	width: 332px;
+	height: 67px;
+	padding: 24px;
+	border: none;
+	border-radius: 24px;
+	cursor: pointer;
+}
+
+.btn-save {
+	color: #fff;
+	background: #0a3871;
+}
+
+.btn-cancel {
+	color: #0a3871;
+	background: transparent;
+	border: 1px solid #0a3871;
+}
