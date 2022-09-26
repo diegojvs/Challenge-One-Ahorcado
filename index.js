@@ -119,7 +119,7 @@ const canvasMobile = () => {
 	canvas.lineWidth = 8;
 	canvas.lineCap = 'round';
 	canvas.lineJoin = 'round';
-	canvas.fillStyle = '#f3f5f6';
+	canvas.fillStyle = 'transparent';
 	canvas.strokeStyle = '#0A3871';
 	// piso
 	canvas.fillRect(0, 0, 280, 350);
@@ -151,7 +151,7 @@ const startGame = () => {
 		canvas.lineWidth = 8;
 		canvas.lineCap = 'round';
 		canvas.lineJoin = 'round';
-		canvas.fillStyle = '#f3f5f6';
+		canvas.fillStyle = 'transparent';
 		canvas.strokeStyle = '#0A3871';
 		// piso
 		canvas.fillRect(0, 0, 500, 500);
