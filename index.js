@@ -19,6 +19,7 @@ const btn_cancel = document.getElementById('btn_cancel');
 const btn_save = document.getElementById('btn_save');
 const btn_restart = document.getElementById('btn_restart');
 const btn_desist = document.getElementById('btn_desist');
+const input_mobile = document.getElementById('input-mobile');
 let word = null;
 let word_array = null;
 let input_array = [];
@@ -181,14 +182,28 @@ btn_cancel.addEventListener('click', () => {
 });
 
 const reset = () => {
-	document.getElementById('Container-input-wrong').remove();
-	let div = document.createElement('div');
-	div.id = 'Container-input-wrong';
-	div.className = 'Container-input-wrong';
-	page2.appendChild(div);
+	// document.getElementById('Container-input-wrong').remove();
+	// let div = document.createElement('div');
+	// div.id = 'Container-input-wrong';
+	// div.className = 'Container-input-wrong';
+	// page2.appendChild(div);
 	const container_input_wrong = document.getElementById(
 		'Container-input-wrong'
 	);
+	document.getElementById('Container-input').remove();
+	document.getElementById('Container-wrong').remove();
+	// let label = document.createElement('label');
+	// label.className = 'Input-label';
+	// label.innerHTML = 'Toca aquí para escribir';
+	// label.setAttribute('for', 'input-mobile');
+	// container_input_wrong.appendChild(label);
+	// let inputMobile = document.createElement('input');
+	// inputMobile.id = 'input-mobile';
+	// inputMobile.className = 'Input-mobile';
+	// inputMobile.setAttribute('type', 'text');
+	// inputMobile.setAttribute('name', 'input-mobile');
+	// container_input_wrong.appendChild(inputMobile);
+	// const input_mobile = document.getElementById('input-mobile');
 	let input = document.createElement('div');
 	input.id = 'Container-input';
 	input.className = 'Container-input';
@@ -197,7 +212,6 @@ const reset = () => {
 	wrong.id = 'Container-wrong';
 	wrong.className = 'Container-wrong';
 	container_input_wrong.appendChild(wrong);
-	word = null;
 	word_array = null;
 	input_array = null;
 	isLive = true;
@@ -312,39 +326,75 @@ const wrongDesktop = () => {
 	}
 };
 
-document.addEventListener('keydown', (e) => {
+if (!input_mobile) {
+	input_mobile = document.getElementById('input-mobile');
+}
+
+input_mobile.addEventListener('input', (e) => {
+	console.log('wena');
 	if (isPage2 && isLive && !win) {
-		let key = e.key;
-		key = key.toLowerCase();
-		let index = [];
-		for (let i = 0; i < word_array.length; i++) {
-			if (key === word_array[i]) {
-				index.push(i);
+		if (e.target.value !== '') {
+			let key = e.target.value.toLowerCase();
+			key = key.at(-1);
+			// console.log(key);
+			let index = [];
+			for (let i = 0; i < word_array.length; i++) {
+				if (key === word_array[i]) {
+					index.push(i);
+				}
 			}
-		}
-		if (index.length > 0) {
-			const container_input = document.getElementById('Container-input');
-			let children = container_input.childNodes;
-			for (let i = 0; i < index.length; i++) {
-				let p = children[index[i]];
-				p.innerHTML = `<p class="Input-p">${key}</p>`;
-			}
-			input_array = input_array.filter((item) => item !== key);
-			console.log(input_array);
-			if (input_array.length == 0) {
-				win = true;
-				alert('Ganaste!!!');
-			}
-		} else {
-			let screenWidth = window.innerWidth;
-			let screenHeight = window.innerHeight;
-			if (screenWidth < 720 && screenHeight >= screenWidth) {
+			if (index.length > 0) {
+				const container_input = document.getElementById('Container-input');
+				let children = container_input.childNodes;
+				for (let i = 0; i < index.length; i++) {
+					let p = children[index[i]];
+					p.innerHTML = `<p class="Input-p">${key}</p>`;
+				}
+				input_array = input_array.filter((item) => item !== key);
+				console.log(input_array);
+				if (input_array.length == 0) {
+					win = true;
+					alert('Ganaste!!!');
+				}
+			} else {
 				wrongMobile();
 				const container_wrong = document.getElementById('Container-wrong');
 				let p = document.createElement('p');
 				p.classList.add('wrong');
 				p.innerHTML = key;
 				container_wrong.appendChild(p);
+			}
+		}
+	}
+});
+
+document.addEventListener('keydown', (e) => {
+	if (window.innerWidth < 720 && window.innerHeight > window.innerWidth) {
+		// console.log('No pesco');
+	} else if (isPage2 && isLive && !win) {
+		if (isPage2 && isLive && !win) {
+			// console.log('pesco');
+			let key = e.key;
+			key = key.toLowerCase();
+			let index = [];
+			for (let i = 0; i < word_array.length; i++) {
+				if (key === word_array[i]) {
+					index.push(i);
+				}
+			}
+			if (index.length > 0) {
+				const container_input = document.getElementById('Container-input');
+				let children = container_input.childNodes;
+				for (let i = 0; i < index.length; i++) {
+					let p = children[index[i]];
+					p.innerHTML = `<p class="Input-p">${key}</p>`;
+				}
+				input_array = input_array.filter((item) => item !== key);
+				console.log(input_array);
+				if (input_array.length == 0) {
+					win = true;
+					alert('Ganaste!!!');
+				}
 			} else {
 				wrongDesktop();
 				const container_wrong = document.getElementById('Container-wrong');
@@ -353,7 +403,7 @@ document.addEventListener('keydown', (e) => {
 				p.innerHTML = key;
 				container_wrong.appendChild(p);
 			}
+			// console.log(key);
 		}
-		console.log(key);
 	}
 });
