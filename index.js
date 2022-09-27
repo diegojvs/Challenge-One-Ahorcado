@@ -147,7 +147,10 @@ const startGame = () => {
 	if (screenWidth < 720 && screenHeight >= screenWidth) {
 		canvasMobile();
 	} else {
-		const canvas = document.getElementById('canvas').getContext('2d');
+		const canvas1 = document.getElementById('canvas');
+		canvas1.width = 500;
+		canvas1.height = 500;
+		const canvas = canvas1.getContext('2d');
 		canvas.lineWidth = 8;
 		canvas.lineCap = 'round';
 		canvas.lineJoin = 'round';
