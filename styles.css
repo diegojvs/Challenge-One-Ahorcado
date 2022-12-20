@@ -192,7 +192,7 @@ body {
 		outline: none;
 	}
 	.Page2 {
-		height: auto;
+		grid-template-rows: auto auto auto auto;
 	}
 }
 /* Page 3 */
